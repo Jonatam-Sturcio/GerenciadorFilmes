@@ -1,0 +1,29 @@
+<h3>Filmes Populares</h3>
+
+<section class="row justify-content-start g-3 mt-3">
+  <div *ngFor="let filme of filmes" class="col-md-4 col-lg-2">
+    <div class="card rounded-3 h-100">
+      <img
+        class="card-img-top"
+        [src]="filme.urlImagem"
+        alt="Imagem do {{ filme.titulo }}"
+      />
+
+      <div class="card-body px-2">
+        <span
+          [ngClass]="mapearCorDaNota(filme.porcetagemNota)"
+          class="app-porcentagem-nota rounded-circle py-1 px-2"
+        >
+          <span class="app-valor-porcentagem fw-semibold">{{
+            filme.porcetagemNota
+          }}</span>
+          <i class="app-icone-porcentagem bi bi-percent"></i>
+        </span>
+
+        <p class="card-title fw-semibold mb-0">{{ filme.titulo }}</p>
+
+        <small class="card-subtitle">{{ filme.lancamento }}</small>
+      </div>
+    </div>
+  </div>
+</section>

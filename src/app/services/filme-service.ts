@@ -6,8 +6,8 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
-export class filmeService {
-  private readonly urlApi: string = 'https://api.themoviedb.org/3/movie/';
+export class FilmeService {
+  private readonly urlApi: string = 'https://api.themoviedb.org/3/movie';
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class filmeService {
 
   private obterHeadersDeAutorizacao() {
     return {
-      metodo: 'GET',
+      method: 'GET',
       headers: {
         accept: 'application/json',
         Authorization: environment.API_KEY,
