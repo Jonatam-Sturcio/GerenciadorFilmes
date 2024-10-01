@@ -12,9 +12,11 @@ import { formatDate, NgClass, NgForOf } from '@angular/common';
 })
 export class ListagemFilmesComponent implements OnInit {
   public filmes: ListagemFilme[];
+  private pagina: number;
 
   constructor(private filmeService: FilmeService) {
     this.filmes = [];
+    this.pagina = 1;
   }
 
   ngOnInit(): void {
@@ -22,12 +24,14 @@ export class ListagemFilmesComponent implements OnInit {
   }
 
   public buscarFilmesPopulares() {
-    this.filmeService.selecionarFilmesPopulares().subscribe((f) => {
+    this.filmeService.selecionarFilmesPopulares(this.pagina).subscribe((f) => {
       const resultados = f.results as any[];
 
       const filmesMapeados = resultados.map(this.mapearListagemResultados);
 
       this.filmes.push(...filmesMapeados);
+
+      this.pagina++;
     });
   }
 

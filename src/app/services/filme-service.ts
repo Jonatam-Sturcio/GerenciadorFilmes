@@ -11,8 +11,8 @@ export class FilmeService {
 
   constructor(private http: HttpClient) {}
 
-  public selecionarFilmesPopulares(): Observable<any> {
-    const urlCompleto = `${this.urlApi}/popular?language=pt-BR`;
+  public selecionarFilmesPopulares(pagina: number): Observable<any> {
+    const urlCompleto = `${this.urlApi}/popular?page=${pagina}&language=pt-BR`;
 
     return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
   }
