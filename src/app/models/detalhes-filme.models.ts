@@ -1,5 +1,6 @@
 import { VideoFilme } from './filme-video.models';
 import { GeneroFilme } from './genero-filme.models';
+import { MembroCreditos } from './membro-creditos.models';
 
 export interface DetalhesFilme {
   id: number;
@@ -10,6 +11,6 @@ export interface DetalhesFilme {
   urlPoster: string;
   urlFundo: string;
   generos: GeneroFilme[];
-
   videos: VideoFilme[];
+  elencoPrincipal: MembroCreditos[];
 }

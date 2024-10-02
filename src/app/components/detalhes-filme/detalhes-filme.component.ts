@@ -1,4 +1,4 @@
-import { formatDate, NgClass, NgIf } from '@angular/common';
+import { formatDate, NgClass, NgForOf, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilmeService } from '../../services/filme.service';
@@ -6,11 +6,12 @@ import { DetalhesFilme } from '../../models/detalhes-filme.models';
 import { GeneroFilme } from '../../models/genero-filme.models';
 import { VideoFilme } from '../../models/filme-video.models';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MembroCreditos } from '../../models/membro-creditos.models';
 
 @Component({
   selector: 'app-detalhes-filme',
   standalone: true,
-  imports: [NgIf, NgClass],
+  imports: [NgIf, NgClass, NgForOf],
   templateUrl: './detalhes-filme.component.html',
   styleUrl: './detalhes-filme.component.scss',
 })
@@ -55,7 +56,10 @@ export class DetalhesFilmeComponent implements OnInit {
         .map(this.mapearGeneroFilme)
         .map((g: GeneroFilme) => g.nome)
         .join(', '),
+
       videos: obj.videos.results.map((v: any) => this.mapearVideoFilme(v)),
+
+      elencoPrincipal: obj.credits.cast.map(this.mapearElencoFilme),
     };
   }
 
@@ -71,6 +75,15 @@ export class DetalhesFilmeComponent implements OnInit {
       sourceUrl: this.domSanitazer.bypassSecurityTrustResourceUrl(
         'https://www.youtube.com/embed/' + obj.key
       ),
+    };
+  }
+
+  private mapearElencoFilme(obj: any): MembroCreditos {
+    return {
+      id: obj.id,
+      nome: obj.name,
+      papel: obj.character,
+      urlImagem: 'https://image.tmdb.org/t/p/w300' + obj.profile_path,
     };
   }
 }

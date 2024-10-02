@@ -58,3 +58,26 @@
     </main>
   </div>
 </div>
+
+<section *ngIf="detalhes" class="contauner my-4">
+  <h4>Elenco Principal</h4>
+
+  <div
+    id="scroll-customizado"
+    class="row flex-nowrap overflow-x-scroll g-2 pb-3 mt-4"
+  >
+    <div *ngFor="let membro of detalhes.elencoPrincipal" class="col-4 col-lg-2">
+      <div class="card rounded-3 h-100">
+        <img
+          class="card-image-top"
+          [src]="membro.urlImagem"
+          [alt]="membro.nome"
+        />
+        <div class="card-body px-2">
+          <p class="card-title fw-semibold mb-0">{{ membro.nome }}</p>
+          <small class="text-secondary text-wrap">{{ membro.papel }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
