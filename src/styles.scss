@@ -1,3 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap";
 @import "bootstrap-icons";
+
+.app-borda-nota-mais-baixa {
+  border: 2px solid transparent;
+  border-top-color: #f62424;
+}
+.app-borda-nota-baixa {
+  border: 2px solid transparent;
+  border-top-color: #f62424;
+  border-right-color: #f62424;
+}
+.app-borda-nota-media {
+  border: 2px solid transparent;
+  border-top-color: #ffed23;
+  border-right-color: #ffed23;
+  border-right-color: #ffed23;
+}
+.app-borda-nota-alta {
+  border: 2px solid #3fe437;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmeService } from '../../services/filme-service';
+import { FilmeService } from '../../services/filme.service';
 import { ListagemFilme } from '../../models/listagem-filme.models';
 import { formatDate, NgClass, NgForOf } from '@angular/common';
 import { RouterLink } from '@angular/router';
