@@ -1,8 +1,8 @@
 <h3>Filmes Populares</h3>
 
-<section class="row justify-content-start g-3 mt-3">
+<section class="row justify-content-center g-3 mt-3">
   <div *ngFor="let filme of filmes" class="col-md-4 col-lg-2">
-    <div class="card rounded-3 h-100">
+    <div class="card card-customizado rounded-3 h-100">
       <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
       <img
         class="card-img-top"
@@ -29,11 +29,25 @@
   </div>
 </section>
 
-<section aria-label="Paginação" class="row justify-content-center mt-4">
+<section
+  aria-label="Paginação"
+  class="row justify-content-center mt-4 gap-2"
+></section>
+<div class="d-flex gap-2 justify-content-center">
   <button
-    (click)="buscarFilmesPopulares()"
-    class="app-botao-gradiente col-md-6 col-lg-4 btn btn-lg fw-semibold rounded-pill"
+    *ngIf="pagina > 1"
+    (click)="buscarFilmesPopularesAnteriores()"
+    class="app-botao-gradiente btn btn-lg fw-semibold rounded-pill"
   >
-    Mais Resultados
+    <<
   </button>
-</section>
+  <button class="app-botao-gradiente btn btn-lg fw-semibold rounded-pill">
+    {{ pagina }}
+  </button>
+  <button
+    (click)="buscarProximosFilmesPopulares()"
+    class="app-botao-gradiente btn btn-lg fw-semibold rounded-pill"
+  >
+    >>
+  </button>
+</div>

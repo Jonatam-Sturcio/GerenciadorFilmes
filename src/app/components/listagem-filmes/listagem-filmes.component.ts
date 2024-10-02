@@ -1,38 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmeService } from '../../services/filme.service';
 import { ListagemFilme } from '../../models/listagem-filme.models';
-import { formatDate, NgClass, NgForOf } from '@angular/common';
+import { formatDate, NgClass, NgForOf, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listagem-filmes',
   standalone: true,
-  imports: [NgForOf, NgClass, RouterLink],
+  imports: [NgForOf, NgClass, RouterLink, NgIf],
   templateUrl: './listagem-filmes.component.html',
   styleUrl: './listagem-filmes.component.scss',
 })
 export class ListagemFilmesComponent implements OnInit {
   public filmes: ListagemFilme[];
-  private pagina: number;
+  public pagina: number;
 
   constructor(private filmeService: FilmeService) {
     this.filmes = [];
-    this.pagina = 1;
+    this.pagina = 0;
   }
 
   ngOnInit(): void {
-    this.buscarFilmesPopulares();
+    this.buscarProximosFilmesPopulares();
   }
 
-  public buscarFilmesPopulares() {
+  public buscarProximosFilmesPopulares() {
+    this.pagina++;
     this.filmeService.selecionarFilmesPopulares(this.pagina).subscribe((f) => {
       const resultados = f.results as any[];
 
-      const filmesMapeados = resultados.map(this.mapearListagemResultados);
+      this.filmes = resultados.map(this.mapearListagemResultados);
 
-      this.filmes.push(...filmesMapeados);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  public buscarFilmesPopularesAnteriores() {
+    this.pagina--;
+    this.filmeService.selecionarFilmesPopulares(this.pagina).subscribe((f) => {
+      const resultados = f.results as any[];
 
-      this.pagina++;
+      this.filmes = resultados.map(this.mapearListagemResultados);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
