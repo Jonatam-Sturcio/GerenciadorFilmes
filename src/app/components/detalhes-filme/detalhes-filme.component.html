@@ -40,7 +40,10 @@
               <strong>Avaliação dos Usuários</strong>
             </div>
           </header>
-          <article class="ratio ratio-16x9 mt-4">
+          <article
+            *ngIf="detalhes.videos.length > 0"
+            class="ratio ratio-16x9 mt-4"
+          >
             <iframe
               [attr.aria-label]="'Trailer de ' + detalhes.titulo"
               [src]="detalhes.videos[0].sourceUrl"
