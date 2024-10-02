@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FilmeService } from '../../services/filme.service';
 import { DetalhesFilme } from '../../models/detalhes-filme.models';
 import { GeneroFilme } from '../../models/genero-filme.models';
+import { VideoFilme } from '../../models/filme-video.models';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-detalhes-filme',
@@ -16,7 +18,8 @@ export class DetalhesFilmeComponent implements OnInit {
   public detalhes?: DetalhesFilme;
   constructor(
     private route: ActivatedRoute,
-    private filmeService: FilmeService
+    private filmeService: FilmeService,
+    private domSanitazer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -52,6 +55,7 @@ export class DetalhesFilmeComponent implements OnInit {
         .map(this.mapearGeneroFilme)
         .map((g: GeneroFilme) => g.nome)
         .join(', '),
+      videos: obj.videos.results.map((v: any) => this.mapearVideoFilme(v)),
     };
   }
 
@@ -59,6 +63,14 @@ export class DetalhesFilmeComponent implements OnInit {
     return {
       id: obj.id,
       nome: obj.name,
+    };
+  }
+  private mapearVideoFilme(obj: any): VideoFilme {
+    return {
+      id: obj.id,
+      sourceUrl: this.domSanitazer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/' + obj.key
+      ),
     };
   }
 }

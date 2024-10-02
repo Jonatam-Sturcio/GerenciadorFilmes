@@ -1,3 +1,4 @@
+import { VideoFilme } from './filme-video.models';
 import { GeneroFilme } from './genero-filme.models';
 
 export interface DetalhesFilme {
@@ -9,4 +10,6 @@ export interface DetalhesFilme {
   urlPoster: string;
   urlFundo: string;
   generos: GeneroFilme[];
+
+  videos: VideoFilme[];
 }
