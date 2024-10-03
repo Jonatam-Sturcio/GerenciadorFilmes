@@ -20,3 +20,12 @@
 .app-borda-nota-alta {
   border: 2px solid #3fe437;
 }
+
+.card-customizado {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-customizado:hover {
+  box-shadow: 0 4px 8px rgba(223, 223, 223, 0.305); /* Efeito de sombra */
+  transform: translateY(-7px); /* Levantar o card levemente */
+}

@@ -33,7 +33,7 @@
                 *ngIf="!detalhes.favorito"
                 title="favoritar"
                 (click)="alterarStatusFavorito(detalhes.id)"
-                class="btn btn-outline-dark rounded-circle py-1"
+                class="btn btn-outline-light rounded-circle py-1"
               >
                 <i class="bi bi-heart fs-3 m-auto"></i>
               </button>
@@ -42,7 +42,7 @@
                 *ngIf="detalhes.favorito"
                 title="remover favorito"
                 (click)="alterarStatusFavorito(detalhes.id)"
-                class="btn btn-outline-dark rounded-circle py-1"
+                class="btn btn-cor btn-outline-light rounded-circle py-1"
               >
                 <i class="bi bi-heart-fill fs-3 m-auto"></i>
               </button>

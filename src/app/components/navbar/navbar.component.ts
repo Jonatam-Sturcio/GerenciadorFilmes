@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TemaService } from '../../services/tema.service';
 
 @Component({
   selector: 'app-navbar',
