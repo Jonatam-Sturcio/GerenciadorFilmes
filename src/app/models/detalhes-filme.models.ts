@@ -13,4 +13,5 @@ export interface DetalhesFilme {
   generos: GeneroFilme[];
   videos: VideoFilme[];
   elencoPrincipal: MembroCreditos[];
+  favorito: boolean;
 }

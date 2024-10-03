@@ -7,6 +7,8 @@ import { GeneroFilme } from '../../models/genero-filme.models';
 import { VideoFilme } from '../../models/filme-video.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MembroCreditos } from '../../models/membro-creditos.models';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { FilmeFavorito } from '../../models/filme-favorito.model';
 
 @Component({
   selector: 'app-detalhes-filme',
@@ -20,6 +22,7 @@ export class DetalhesFilmeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private filmeService: FilmeService,
+    private localStorageService: LocalStorageService,
     private domSanitazer: DomSanitizer
   ) {}
 
@@ -43,6 +46,22 @@ export class DetalhesFilmeComponent implements OnInit {
     else return 'app-borda-nota-mais-baixa';
   }
 
+  public alterarStatusFavorito(id: number) {
+    if (!this.detalhes) return;
+    if (this.localStorageService.favoritoJaExiste(id)) {
+      this.detalhes.favorito = false;
+      this.localStorageService.removerFavorito(id);
+    } else {
+      this.detalhes.favorito = true;
+      const novoFavorito: FilmeFavorito = {
+        id: id,
+        titulo: this.detalhes.titulo,
+        urlImagem: this.detalhes.urlPoster,
+      };
+      this.localStorageService.salvarFavorito(novoFavorito);
+    }
+  }
+
   private mapearDetalhesFilme(obj: any): DetalhesFilme {
     return {
       id: obj.id,
@@ -60,6 +79,8 @@ export class DetalhesFilmeComponent implements OnInit {
       videos: obj.videos.results.map((v: any) => this.mapearVideoFilme(v)),
 
       elencoPrincipal: obj.credits.cast.map(this.mapearElencoFilme),
+
+      favorito: this.localStorageService.favoritoJaExiste(obj.id),
     };
   }
 
