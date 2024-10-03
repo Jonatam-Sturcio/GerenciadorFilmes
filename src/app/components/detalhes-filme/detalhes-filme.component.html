@@ -1,5 +1,9 @@
-<div *ngIf="detalhes">
-  <div>
+<div
+  *ngIf="detalhes"
+  [style.background-image]="'url(' + detalhes.urlFundo + ')'"
+  class="app-imagem-fundo rounded-2"
+>
+  <div class="app-overlay-imagem">
     <main class="container py-5">
       <section aria-label="Detalhes do Filme" class="row g-3">
         <div class="col-lg-3">
@@ -49,7 +53,7 @@
 
               <span
                 [ngClass]="mapearCorDaNota(detalhes.porcentagemNota)"
-                class="app-porcentagem-nota d-flex justify-content-center align-items-center rounded-circle"
+                class="app-porcentagem-nota-detalhes d-flex justify-content-center align-items-center rounded-circle"
               >
                 <span class="app-valor-porcentagem fw-semibold">{{
                   detalhes.porcentagemNota

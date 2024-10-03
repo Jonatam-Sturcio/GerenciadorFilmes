@@ -1,4 +1,4 @@
-.app-porcentagem-nota {
+.app-porcentagem-nota-detalhes {
   width: 50px;
   height: 48px;
   background-color: #081c22;
@@ -26,5 +26,17 @@
     border-radius: 5px;
   }
 }
-.btn-cor {
+.app-imagem-fundo {
+  background-color: rgba(0, 0, 0, 0.212);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-overlay-imagem {
+  background-image: linear-gradient(
+    to right,
+    rgb(61, 61, 61) calc((50vw - 170px) - 340px),
+    rgba(44, 44, 44, 0.84) 50%,
+    rgba(18, 18, 18, 0.84) 100%
+  );
 }
