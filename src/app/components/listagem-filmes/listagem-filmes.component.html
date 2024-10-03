@@ -31,11 +31,7 @@
   </div>
 </section>
 
-<section
-  aria-label="Paginação"
-  class="row justify-content-center mt-4 gap-2"
-></section>
-<div class="d-flex gap-2 justify-content-center">
+<div class="d-flex sticky-bottom justify-content-center gap-2 pb-2 pt-4">
   <button
     *ngIf="pagina > 1"
     (click)="buscarFilmesPopularesAnteriores()"
