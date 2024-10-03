@@ -3,5 +3,5 @@ export interface ListagemFilme {
   titulo: string;
   lancamento: string;
   urlImagem: string;
-  porcetagemNota: string;
+  porcentagemNota: string;
 }

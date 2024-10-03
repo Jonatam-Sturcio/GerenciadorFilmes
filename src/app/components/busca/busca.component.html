@@ -1,0 +1,65 @@
+<app-barra-busca></app-barra-busca>
+
+<div *ngIf="resultadoBusca" class="container my-4">
+  <div class="row g-3">
+    <div class="col-lg-3">
+      <ul class="list-group">
+        <li
+          class="app-cabecalho-lista list-group-item active fs-5 fw-bold py-3"
+          aria-current="true"
+        >
+          Resultados da Busca
+        </li>
+        <li class="list-group-item d-flex">
+          Filmes
+          <span
+            class="ms-auto badge bg-secondary d-flex justify-content-center align-items-center"
+            >{{ resultadoBusca.quantidadeResultados }}</span
+          >
+        </li>
+        <li class="list-group-item d-flex">
+          Páginas
+          <span
+            class="ms-auto badge bg-secondary d-flex justify-content-center align-items-center"
+            >{{ resultadoBusca.quantidadePaginas }}</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="row g-3">
+        <div *ngFor="let filme of resultadoBusca.filmes" class="col-4 col-lg-3">
+          <div class="app-card-filme card rounded-3 h-100">
+            <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
+
+            <img
+              class="card-img-top"
+              [src]="filme.urlImagem"
+              alt="Imagem do Filme {{ filme.titulo }}"
+            />
+
+            <div class="card-body px-2">
+              <span
+                [ngClass]="mapearCorDaNota(filme.porcentagemNota)"
+                class="app-porcentagem-nota rounded-circle py-1 px-2"
+              >
+                <span class="app-valor-porcentagem fw-semibold">{{
+                  filme.porcentagemNota
+                }}</span>
+                <i class="app-icone-porcentagem bi bi-percent"></i>
+              </span>
+
+              <p class="app-titulo-card card-title fw-semibold mb-0">
+                {{ filme.titulo }}
+              </p>
+
+              <small class="card-subtitle text-secondary">{{
+                filme.lancamento
+              }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

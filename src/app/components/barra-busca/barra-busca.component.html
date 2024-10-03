@@ -1,0 +1,28 @@
+<div class="app-banner-busca">
+  <div class="app-container-principal container">
+    <div class="row gap-3 w-100">
+      <header class="col d-grid gap-3 text-light">
+        <div>
+          <h1 class="fw-bolder fs-1">Bem vindo(a).</h1>
+          <h2 class="fs-3">Milhões de Filmes para Descobrir. Explore já.</h2>
+        </div>
+
+        <form class="d-flex gap-2 input-group">
+          <input
+            #inputQuery
+            type="text"
+            placeholder="Buscar por um Filme"
+            class="form-control py-2 px-3 fs-5 rounded-5"
+          />
+          <button
+            (click)="buscar(inputQuery.value)"
+            class="app-botao-gradiente rounded-5 px-5 fw-bold"
+            type="button"
+          >
+            Buscar
+          </button>
+        </form>
+      </header>
+    </div>
+  </div>
+</div>

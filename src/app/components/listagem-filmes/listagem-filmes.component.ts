@@ -6,11 +6,19 @@ import { RouterLink } from '@angular/router';
 import { FilmeFavorito } from '../../models/filme-favorito.model';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { FilmesFavoritosComponent } from '../filmes-favoritos/filmes-favoritos.component';
+import { BarraBuscaComponent } from '../barra-busca/barra-busca.component';
 
 @Component({
   selector: 'app-listagem-filmes',
   standalone: true,
-  imports: [NgForOf, NgClass, RouterLink, NgIf, FilmesFavoritosComponent],
+  imports: [
+    NgForOf,
+    NgClass,
+    RouterLink,
+    NgIf,
+    FilmesFavoritosComponent,
+    BarraBuscaComponent,
+  ],
   templateUrl: './listagem-filmes.component.html',
   styleUrl: './listagem-filmes.component.scss',
 })
@@ -68,7 +76,7 @@ export class ListagemFilmesComponent implements OnInit {
       titulo: obj.title,
       lancamento: formatDate(obj.release_date, 'mediumDate', 'pt-BR'),
       urlImagem: 'https://image.tmdb.org/t/p/w300/' + obj.poster_path,
-      porcetagemNota: (obj.vote_average * 10).toFixed(0),
+      porcentagemNota: (obj.vote_average * 10).toFixed(0),
     };
   }
 }

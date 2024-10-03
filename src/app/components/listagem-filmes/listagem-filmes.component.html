@@ -1,3 +1,4 @@
+<app-barra-busca></app-barra-busca>
 <app-filmes-favoritos [filmes]="filmesFavoritos"></app-filmes-favoritos>
 
 <h3 class="mt-4">Filmes Populares</h3>
@@ -14,11 +15,11 @@
 
       <div class="card-body px-2">
         <span
-          [ngClass]="mapearCorDaNota(filme.porcetagemNota)"
+          [ngClass]="mapearCorDaNota(filme.porcentagemNota)"
           class="app-porcentagem-nota rounded-circle py-1 px-2"
         >
           <span class="app-valor-porcentagem fw-semibold">{{
-            filme.porcetagemNota
+            filme.porcentagemNota
           }}</span>
           <i class="app-icone-porcentagem bi bi-percent"></i>
         </span>

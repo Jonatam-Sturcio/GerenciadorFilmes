@@ -29,3 +29,41 @@
   box-shadow: 0 4px 8px rgba(223, 223, 223, 0.305); /* Efeito de sombra */
   transform: translateY(-7px); /* Levantar o card levemente */
 }
+.app-porcentagem-nota {
+  background-color: black;
+  color: #f3f3f3;
+
+  width: 37px;
+  height: 37px;
+
+  position: absolute;
+
+  top: 1%;
+  left: 1%;
+
+  .app-valor-porcentagem {
+    position: absolute;
+
+    top: 12%;
+    left: 18%;
+  }
+
+  .app-icone-porcentagem {
+    position: absolute;
+
+    bottom: 15%;
+    right: 8%;
+
+    font-size: 9px;
+  }
+}
+
+.app-botao-gradiente {
+  border: none;
+  background: linear-gradient(
+    to right,
+    rgba(30, 213, 169, 1) 1%,
+    rgba(1, 180, 228, 1) 100%
+  );
+  color: #ffff;
+}
