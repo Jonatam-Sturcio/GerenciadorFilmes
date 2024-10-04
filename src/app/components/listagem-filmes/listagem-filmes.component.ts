@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FilmeService } from '../../services/filme.service';
 import { ListagemFilme } from '../../models/listagem-filme.models';
 import { formatDate, NgClass, NgForOf, NgIf } from '@angular/common';
@@ -26,6 +26,7 @@ export class ListagemFilmesComponent implements OnInit {
   public filmes: ListagemFilme[];
   public pagina: number;
   public filmesFavoritos: FilmeFavorito[];
+  @ViewChild('Filmes') secaoSelecionada?: ElementRef;
 
   constructor(
     private filmeService: FilmeService,
@@ -48,7 +49,10 @@ export class ListagemFilmesComponent implements OnInit {
 
       this.filmes = resultados.map(this.mapearListagemResultados);
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: this.secaoSelecionada?.nativeElement.offsetTop,
+        behavior: 'smooth',
+      });
     });
   }
   public buscarFilmesPopularesAnteriores() {
@@ -58,7 +62,10 @@ export class ListagemFilmesComponent implements OnInit {
 
       this.filmes = resultados.map(this.mapearListagemResultados);
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: this.secaoSelecionada?.nativeElement.offsetTop,
+        behavior: 'smooth',
+      });
     });
   }
 
