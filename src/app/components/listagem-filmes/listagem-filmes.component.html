@@ -1,36 +1,38 @@
 <app-barra-busca></app-barra-busca>
 <app-filmes-favoritos [filmes]="filmesFavoritos"></app-filmes-favoritos>
 
-<h3 class="mt-4">Filmes Populares</h3>
+<div class="container mt-4">
+  <h3 class="mt-4">Filmes Populares</h3>
 
-<section class="row justify-content-center g-3 mt-3">
-  <div *ngFor="let filme of filmes" class="col-md-4 col-lg-2">
-    <div class="card card-customizado rounded-3 h-100">
-      <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
-      <img
-        class="card-img-top"
-        [src]="filme.urlImagem"
-        alt="Imagem do {{ filme.titulo }}"
-      />
+  <section class="row justify-content-center g-3 mt-3">
+    <div *ngFor="let filme of filmes" class="col-md-4 col-lg-2">
+      <div class="card card-customizado rounded-3 h-100">
+        <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
+        <img
+          class="card-img-top"
+          [src]="filme.urlImagem"
+          alt="Imagem do {{ filme.titulo }}"
+        />
 
-      <div class="card-body px-2">
-        <span
-          [ngClass]="mapearCorDaNota(filme.porcentagemNota)"
-          class="app-porcentagem-nota rounded-circle py-1 px-2"
-        >
-          <span class="app-valor-porcentagem fw-semibold">{{
-            filme.porcentagemNota
-          }}</span>
-          <i class="app-icone-porcentagem bi bi-percent"></i>
-        </span>
+        <div class="card-body px-2">
+          <span
+            [ngClass]="mapearCorDaNota(filme.porcentagemNota)"
+            class="app-porcentagem-nota rounded-circle py-1 px-2"
+          >
+            <span class="app-valor-porcentagem fw-semibold">{{
+              filme.porcentagemNota
+            }}</span>
+            <i class="app-icone-porcentagem bi bi-percent"></i>
+          </span>
 
-        <p class="card-title fw-semibold mb-0">{{ filme.titulo }}</p>
+          <p class="card-title fw-semibold mb-0">{{ filme.titulo }}</p>
 
-        <small class="card-subtitle">{{ filme.lancamento }}</small>
+          <small class="card-subtitle">{{ filme.lancamento }}</small>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <div class="d-flex sticky-bottom justify-content-center gap-2 pb-2 pt-4">
   <button
