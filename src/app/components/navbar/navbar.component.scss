@@ -1,3 +1,27 @@
-.navbar-back {
-  background-color: #124467;
+.app-fundo-navbar {
+  background-color: #032541;
+}
+
+.app-botao-navbar {
+  color: #ffffff;
+
+  min-width: 130px;
+
+  text-align: center;
+  font-size: 17px;
+
+  &::after {
+    content: "";
+
+    width: 0px;
+    height: 1px;
+
+    display: block;
+    background: white;
+    transition: 300ms ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 }
