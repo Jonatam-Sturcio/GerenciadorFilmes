@@ -95,6 +95,13 @@
             "styles": ["src/styles.scss"],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://Jonatam-Sturcio.github.io/GerenciadorFilmes/",
+            "repo": "https://github.com/Jonatam-Sturcio/GerenciadorFilmes.git"
+          }
         }
       }
     }
